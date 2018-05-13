@@ -55,7 +55,7 @@ function circle_points(r=1, a1=0, a2=360, shift=[0,0], fn=100) =
 * @param shift смещение по X и Y
  * @param fn количество сегментов на скруглениях окружности
  *     (по умолчанию: 100)
- * @return массив точек [x,y] окружности или дуги
+ * @return массив точек [x,y] прямоугольника
  
  */
 function rect_points(dim=[1,1], center=false,
