@@ -13,7 +13,7 @@ Draw arcs and circles
     translate([30, 0]) polygon(circle_points(r=3, a1=45, a2=270, fn=8));
 ~~~
 
-Draw reounded rect
+Draw rounded rect
 ~~~scad
     polygon(rect_points([10, 15], center=true));
     translate([15, 0]) polygon(rect_points([10, 15]));
