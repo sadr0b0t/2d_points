@@ -37,7 +37,7 @@ function circle_points(r=1, a1=0, a2=360, shift=[0,0], fn=100) =
             circle_points(r=r, fn=fn, a1=a1, a2=a2-360/fn, shift=shift),
             [[r*cos(a2)+shift.x, r*sin(a2)+shift.y]]
         ) :
-        [[r*cos(a2)+shift.x, r*sin(a2)+shift.y]];
+        [[r*cos(a1)+shift.x, r*sin(a1)+shift.y]];
 
 /**
  * Прямоугольник со скругленными углами.
