@@ -1,5 +1,15 @@
 # 2d_points
-Generate 2D shapes as arrays of points in OpenSCAD
+Generate 2D shapes as arrays of points in OpenSCAD  
+thingiverse: https://www.thingiverse.com/thing:2930492
+
+Also available from Openscad-Modules repo
+https://github.com/RobertFach/Openscad-Modules
+
+~~~
+spm install 2d_points
+~~~
+
+All shapes are generated as array of points, you should apply them to polygon call on your own. This might be convenient, if you want to pass some unknown beforehand shape to module or function as param.
 
 ~~~scad
 use <2d_points/2d_points.scad>
@@ -21,7 +31,7 @@ Draw rounded rect
     translate([45, 0]) polygon(rect_points([10, 15], r=4, r3=0, r4=2));
 ~~~
 
-Draw bezier curves of any degrees (credit to Christian Limberg: bezier curve drawing code taken from this post with some fixes, additions and refactoring http://climberg.de/page/openscad-implementation-of-bezier-curves-of-any-degrees/)
+Draw Bezier curves of any degrees (credit to Christian Limberg: Bezier curve drawing code taken from this post with some fixes, additions and refactoring http://climberg.de/page/openscad-implementation-of-bezier-curves-of-any-degrees/)
 ~~~scad
     seg1=[[0,0], [0, 10], [10, 10], [10, 0]];
     seg2=[[0,0], [-5, 10], [15, 10], [10, 0]];
@@ -52,7 +62,7 @@ Draw bezier curves of any degrees (credit to Christian Limberg: bezier curve dra
     }
 ~~~
 
-And compound bezier curves (polybezier). Each segment can be of any degree.
+And compound Bezier curves (polybezier). Each segment can be of any degree.
 ~~~scad
     segments=[
         [[0, 0], [0, 10], [10, 10], [10, 0]],

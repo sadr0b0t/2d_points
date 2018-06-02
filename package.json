@@ -1,7 +1,7 @@
 {
   "name": "2d_points",
   "version": "0.2.0",
-  "description": " Generate 2D shapes as arrays of points in OpenSCAD",
+  "description": "Generate 2D shapes as arrays of points in OpenSCAD",
   "main": "2d_points.scad",
   "files": [
     "2d_points.scad",

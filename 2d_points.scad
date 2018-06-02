@@ -2,7 +2,7 @@
 demo_rect();
 translate([0, 20, 0]) demo_circle();
 translate([0, 30, 0]) demo_bezier();
-translate([0, 60, 0]) demo_polybezier();
+translate([0, 65, 0]) demo_polybezier();
 translate([0, 120, 0]) scale([0.4, 0.4, 1]) demo_polybezier2();
 translate([0, 80, 0]) demo_polybezier3();
 
@@ -63,7 +63,16 @@ module demo_polybezier() {
     color([0.9,0.9,0.4]) polygon(segments[2]);
     color([0.4,0.4,0.9]) polygon(segments[3]);
     linear_extrude(height=2)
-        polygon(polybezier_points(segments, fn=100));
+        polygon(polybezier_points(segments));
+    
+    translate([50, 0, 0]) {
+        color([0.4,0.9,0.9]) polygon(segments[0]);
+        color([0.9,0.4,0.9]) polygon(segments[1]);
+        color([0.9,0.9,0.4]) polygon(segments[2]);
+        color([0.4,0.4,0.9]) polygon(segments[3]);
+        linear_extrude(height=2)
+            polygon(polybezier_points(segments, fn=5));
+    }
 }
 
 module demo_polybezier2() {
@@ -248,7 +257,7 @@ function _point_on_bezier(points, t)=
     _point_on_bezier_rec(points, t, 0, [0,0]);
 
 /**
- * A bezier curve with any number of control points.
+ * A Bezier curve with any number of control points.
  * 
  * @param points the control points of the bezier curve
  *     (number of points is variable)
@@ -256,7 +265,7 @@ function _point_on_bezier(points, t)=
  *     (number of segments on the curve, default: 100)
  * @return array of points for bezier curve
  */
-function bezier_points(points, fn=100)=[
+function bezier_points(points, fn=20)=[
     // this looks like onenscad bug:
     // if you generate list with step=0.1: [0:0.1:1],
     // you will get [0, 0.1, 0.2, 0.3 ... 1]
@@ -266,7 +275,7 @@ function bezier_points(points, fn=100)=[
     for (t =[0:1.0/fn:1+(1/fn/2)]) _point_on_bezier(points, t)
 ];
 
-function _polybezier_points(segments, fn=100, seg_n)=
+function _polybezier_points(segments, fn=20, seg_n)=
     seg_n == 0 ? bezier_points(segments[0], fn) :
         concat(
             _polybezier_points(segments, fn=fn, seg_n=seg_n-1),
@@ -274,12 +283,12 @@ function _polybezier_points(segments, fn=100, seg_n)=
         );
 
 /**
- * Composite bezier curve.
+ * Composite Bezier curve.
  *
  * @param segments array of segments, each segment is an array of
  *     control points for bezier curve
  * @param fn number of fragments per each segment
  * @return array of points for composite bezier curve
  */ 
-function polybezier_points(segments, fn=100)=
+function polybezier_points(segments, fn=20)=
     _polybezier_points(segments, fn=fn, seg_n=len(segments)-1);
